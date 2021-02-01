@@ -1,0 +1,35 @@
+{
+  "name": "decompile-wx",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/shunyue1320/decompile-wx.git",
+  "author": "shunyue1320",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "buildmac": "electron-packager . --mac --out ../dist --overwrite --icon images/macicon.icns --ignore dont_include",
+    "buildwin": "electron-packager . --win --out ../dist --overwrite --icon images/winicon.ico --ignore dont_include"
+  },
+  "build": {},
+  "keywords": [
+    "反编译",
+    "wxapkg",
+    "微信小程序",
+    "miniprogram"
+  ],
+  "dependencies": {
+    "bytenode": "^1.1.7",
+    "cheerio": "^1.0.0-rc.5",
+    "child_process": "^1.0.2",
+    "css-tree": "^1.0.0-alpha.28",
+    "cssbeautify": "^0.3.1",
+    "escodegen": "^2.0.0",
+    "esprima": "^4.0.0",
+    "js-beautify": "^1.7.5",
+    "uglify-es": "^3.3.9",
+    "vm2": "^3.6.0"
+  },
+  "devDependencies": {
+    "electron": "9.4.0"
+  }
+}
