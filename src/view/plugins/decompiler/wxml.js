@@ -1,5 +1,5 @@
 const wu = require("./lib.js");
-const { getZ } = require("./restoreZ.js.js");
+const { getZ } = require("./restoreZ.js");
 const { wxsBeautify } = require("./js.js");
 const fs = require('fs');
 const path = require("path");

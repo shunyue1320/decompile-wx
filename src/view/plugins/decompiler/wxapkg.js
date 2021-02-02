@@ -181,9 +181,7 @@ function packDone(dir, cb, order) {
 }
 
 function doFile(name, cb, order) {
-  console.log(name, cb, order);
   for (let ord of order) if (ord.startsWith("s=")) global.subPack = ord.slice(3);
-  console.log("Unpack file " + name + "...");
   let dir = path.resolve(name, "..", path.basename(name, ".wxapkg"));
   wu.get(name, buf => {
     let [infoListLength, dataLength] = header(buf.slice(0, 14));

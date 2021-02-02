@@ -181,8 +181,7 @@ function commandExecute(cb, helper) {
 
   let orders = [];
   for (let order of process.argv) if (order.startsWith("-")) orders.push(order.slice(1));
-  let iter = process.argv[Symbol.iterator](), nxt = iter.next(), called = false, faster = orders.includes("f"),
-    fastCnt;
+  let iter = process.argv[Symbol.iterator](), nxt = iter.next(), called = false, faster = orders.includes("f"), fastCnt;
   if (faster) {
     fastCnt = new CntEvent;
     fastCnt.add(endTime);
