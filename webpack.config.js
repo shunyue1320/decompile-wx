@@ -7,7 +7,6 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 module.exports = {
   target: 'node',
   mode: process.env.NODE_ENV ? 'production' : 'development',
-  devtool: process.env.NODE_ENV ? 'source-map' : 'inline-source-map',
   entry: path.resolve(__dirname, './src/view/main.js'),
   output: {
     path: path.resolve(__dirname, './dist'),
@@ -33,10 +32,12 @@ module.exports = {
       {
         test: /\.vue$/,
         use: 'vue-loader'
-      }, {
+      },
+      {
         test: /\.css$/,
         use: ['style-loader', 'css-loader']
-      }, {
+      },
+      {
         test: /\.scss$/,
         use: ['style-loader', 'css-loader', 'sass-loader']
       }
@@ -59,13 +60,6 @@ module.exports = {
     })
   ],
   devServer: {
-    port: 8080,
-    publicPath: '/',
-    inline: true,
-    hot: true,
-    stats: 'minimal',
-    contentBase: __dirname,
-    overlay: true,
-    historyApiFallback: true
+    port: 8080
   }
 }
