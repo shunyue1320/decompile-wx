@@ -1,11 +1,10 @@
 const path = require('path')
 const { VueLoaderPlugin } = require('vue-loader')
-const nodeExternals = require('webpack-node-externals')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const CopyPlugin = require('copy-webpack-plugin')
 
-module.exports = {
-  target: 'node',
+module.exports = { 
   mode: process.env.NODE_ENV ? 'production' : 'development',
   entry: path.resolve(__dirname, './src/view/main.js'),
   output: {
@@ -50,13 +49,21 @@ module.exports = {
     },
     extensions: [ '.js', '.vue' ]
   },
-  externals: [ nodeExternals() ],
+  externals: [],
   plugins: [
     new VueLoaderPlugin(),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, './public/index.html'),
       filename: 'index.html'
+    }),
+    new CopyPlugin({
+      patterns: [
+        {
+          from: path.join(__dirname, '.view/assets/src/logo.ico'),
+          to: 'logo.ico'
+        }
+      ]
     })
   ],
   devServer: {
