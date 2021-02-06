@@ -181,6 +181,7 @@ function packDone(dir, cb, order) {
 }
 
 function doFile(name, cb, order) {
+  console.log("1111111111111进来了")
   for (let ord of order) if (ord.startsWith("s=")) global.subPack = ord.slice(3);
   let dir = path.resolve(name, "..", path.basename(name, ".wxapkg"));
   wu.get(name, buf => {
