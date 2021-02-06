@@ -1,12 +1,12 @@
 {
   "name": "decompile-wx",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "webpack.config.js",
   "repository": "https://github.com/shunyue1320/decompile-wx.git",
   "author": "shunyue1320",
   "license": "MIT",
   "scripts": {
-    "dev": "webpack serve",
+    "dev": "webpack serve --watch",
     "start": "electron .",
     "buildmac": "electron-packager . --mac --out ../dist --overwrite --icon images/macicon.icns --ignore dont_include",
     "buildwin": "electron-packager . --win --out ../dist --overwrite --icon images/winicon.ico --ignore dont_include"
@@ -15,7 +15,7 @@
   "keywords": [
     "反编译",
     "wxapkg",
-    "微信小程序",
+    "微信小程序", 
     "miniprogram"
   ],
   "dependencies": {
@@ -47,7 +47,6 @@
     "vue-loader": "^16.1.2",
     "webpack": "^5.19.0",
     "webpack-cli": "^4.4.0",
-    "webpack-dev-server": "^3.11.2",
-    "webpack-node-externals": "^2.5.2"
+    "webpack-dev-server": "^3.11.2"
   }
 }
