@@ -10,6 +10,24 @@
     "start": "electron .",
     "buildmac": "electron-packager . --mac --out ../dist --overwrite --icon images/macicon.icns --ignore dont_include",
     "buildwin": "electron-packager . --win --out ../dist --overwrite --icon images/winicon.ico --ignore dont_include"
+  "build": {
+    "appId": "com.guojianbo.top",
+    "productName": "小程序反编译",
+    "copyright": "Copyright © 2021 ${author}",
+    "directories": {
+      "output": "build"
+    },
+    "files": [
+      "./package.json",
+      "./dist/**"
+    ],
+    "win": {
+      "icon": "./src/views/assets/images/logo.ico",
+      "artifactName": "${productName}_${version}.${ext}"
+    },
+    "mac": {
+      "artifactName": "${productName}_${version}.${ext}"
+    }
   },
   "build": {},
   "keywords": [
