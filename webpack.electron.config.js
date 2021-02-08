@@ -1,8 +1,9 @@
 const path = require('path')
-const _ = require('lodash')
 const webpack = require('webpack')
 const dotenvFlow = require('dotenv-flow')
 const dotenvExpand = require('dotenv-expand')
+const CopyPlugin = require('copy-webpack-plugin')
+const nodeExternals = require('webpack-node-externals')
 
 const env = dotenvFlow.config({ default_node_env: 'development' })
 dotenvExpand(env)
@@ -10,7 +11,7 @@ dotenvExpand(env)
 module.exports = {
   target: 'electron-main',
   entry: path.resolve(__dirname, './src/main/index.js'),
-  mode: process.env.NODE_ENV === 'development' ? 'development' : 'production',
+  mode: process.env.NODE_ENV || 'development',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].bundle.js'
@@ -41,6 +42,15 @@ module.exports = {
     ]
   },
   plugins: [
-    new webpack.EnvironmentPlugin(_.keys(env.parsed).concat(['NODE_ENV']))
-  ]
+    new webpack.EnvironmentPlugin(Object.keys(env.parsed).concat(['NODE_ENV'])),
+    new CopyPlugin({
+      patterns: [
+        {
+          from: path.join(__dirname, './src/view/assets/images/logo.ico'),
+          to: 'logo.ico'
+        }
+      ]
+    })
+  ],
+  externals: [ nodeExternals() ]
 }
