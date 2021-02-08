@@ -1,15 +1,17 @@
 {
   "name": "decompile-wx",
   "version": "1.0.0",
-  "main": "webpack.config.js",
+  "main": "dist/main.bundle.js",
   "repository": "https://github.com/shunyue1320/decompile-wx.git",
   "author": "shunyue1320",
   "license": "MIT",
   "scripts": {
-    "dev": "webpack serve --watch",
-    "start": "electron .",
-    "buildmac": "electron-packager . --mac --out ../dist --overwrite --icon images/macicon.icns --ignore dont_include",
-    "buildwin": "electron-packager . --win --out ../dist --overwrite --icon images/winicon.ico --ignore dont_include"
+    "start:view": "cross-env NODE_ENV=development webpack serve --config webpack.view.config.js --watch",
+    "start:electron": "cross-env NODE_ENV=development webpack --config webpack.electron.config.js && electron .",
+    "bulid:view": "cross-env NODE_ENV=production webpack --config webpack.view.config.js",
+    "bulid:electron": "cross-env NODE_ENV=production webpack --config webpack.electron.config.js",
+    "build": "yarn bulid:view && yarn bulid:electron && cross-env NODE_ENV=production electron-builder --win --x64"
+  },
   "build": {
     "appId": "com.guojianbo.top",
     "productName": "小程序反编译",
@@ -29,11 +31,10 @@
       "artifactName": "${productName}_${version}.${ext}"
     }
   },
-  "build": {},
   "keywords": [
     "反编译",
     "wxapkg",
-    "微信小程序", 
+    "微信小程序",
     "miniprogram"
   ],
   "dependencies": {
@@ -57,7 +58,11 @@
     "@vue/compiler-sfc": "^3.0.5",
     "babel-loader": "8.2.2",
     "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^7.0.0",
+    "cross-env": "^7.0.3",
     "css-loader": "^5.0.1",
+    "dotenv-expand": "^5.1.0",
+    "dotenv-flow": "^3.2.0",
     "electron": "9.4.0",
     "html-webpack-plugin": "5.0.0-beta.6",
     "node-sass": "^5.0.0",
@@ -66,6 +71,7 @@
     "vue-loader": "^16.1.2",
     "webpack": "^5.19.0",
     "webpack-cli": "^4.4.0",
-    "webpack-dev-server": "^3.11.2"
+    "webpack-dev-server": "^3.11.2",
+    "webpack-node-externals": "^2.5.2"
   }
 }
