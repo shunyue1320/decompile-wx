@@ -37,6 +37,7 @@
     "miniprogram"
   ],
   "dependencies": {
+    "ant-design-vue": "^2.0.0",
     "bytenode": "^1.1.7",
     "cheerio": "^1.0.0-rc.5",
     "child_process": "^1.0.2",
