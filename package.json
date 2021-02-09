@@ -38,6 +38,7 @@
     "miniprogram"
   ],
   "dependencies": {
+    "@ant-design/icons-vue": "^6.0.1",
     "ant-design-vue": "^2.0.0",
     "bytenode": "^1.1.7",
     "cheerio": "^1.0.0-rc.5",
