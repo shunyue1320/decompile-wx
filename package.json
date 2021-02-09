@@ -8,9 +8,9 @@
   "scripts": {
     "start:view": "cross-env NODE_ENV=development webpack serve --config webpack.view.config.js --watch",
     "start:electron": "cross-env NODE_ENV=development webpack --config webpack.electron.config.js && electron .",
-    "bulid:view": "cross-env NODE_ENV=production webpack --config webpack.view.config.js",
-    "bulid:electron": "cross-env NODE_ENV=production webpack --config webpack.electron.config.js",
-    "build": "yarn bulid:view && yarn bulid:electron && cross-env NODE_ENV=production electron-builder --win --x64"
+    "build:view": "del-cli dist && cross-env NODE_ENV=production webpack --config webpack.view.config.js",
+    "build:electron": "cross-env NODE_ENV=production webpack --config webpack.electron.config.js",
+    "build": "cross-env NODE_ENV=production electron-builder --win --x64"
   },
   "build": {
     "appId": "com.guojianbo.top",
@@ -62,9 +62,11 @@
     "copy-webpack-plugin": "^7.0.0",
     "cross-env": "^7.0.3",
     "css-loader": "^5.0.1",
+    "del-cli": "^3.0.1",
     "dotenv-expand": "^5.1.0",
     "dotenv-flow": "^3.2.0",
     "electron": "9.4.0",
+    "electron-builder": "^22.9.1",
     "html-webpack-plugin": "5.0.0-beta.6",
     "node-sass": "^5.0.0",
     "sass-loader": "^10.1.1",
