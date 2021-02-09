@@ -42,7 +42,6 @@ module.exports = {
     ]
   },
   plugins: [
-    new webpack.EnvironmentPlugin(Object.keys(env.parsed).concat(['NODE_ENV'])),
     new CopyPlugin({
       patterns: [
         {

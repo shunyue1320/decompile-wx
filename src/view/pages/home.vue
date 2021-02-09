@@ -50,20 +50,20 @@ export default {
     function convertWxapkg(event) {
       event.preventDefault();
       const filePath = event.dataTransfer.files[0]?.path
-      if (filePath) {
-        decompilerFile(filePath)
-      }
+      decompilerFile(filePath)
     }
 
     function uploadFile(event) {
       const filePath = event.target.files[0]?.path
-      if (filePath) {
-        decompilerFile(filePath)
-      }
+      decompilerFile(filePath)
     }
 
     function decompilerFile(filePath) {
-      if (filePath.endsWith('.wxapkg')) {
+      if (btnState.value == 'loading') {
+        alert("您太快了！")
+        return
+      }
+      if (filePath && filePath.endsWith('.wxapkg')) {
         btnState.value = 'loading'
         ipcRenderer.send('decompiler-start', filePath)
         ipcRenderer.on('decompiler-success', (event, arg) => {

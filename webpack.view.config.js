@@ -10,7 +10,8 @@ module.exports = {
   devtool: NODE_ENV == 'development' ? 'source-map' : false,
   entry: path.resolve(__dirname, './src/view/main.js'),
   output: {
-    path: path.resolve(__dirname, './dist')
+    path: path.resolve(__dirname, './dist'),
+    filename: '[name]-[contenthash].bundle.js'
   },
   module: {
     rules: [
