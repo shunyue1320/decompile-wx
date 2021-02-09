@@ -3,12 +3,14 @@ const { VueLoaderPlugin } = require('vue-loader')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
+const NODE_ENV = process.env.NODE_ENV || 'development'
+
 module.exports = { 
-  mode: process.env.NODE_ENV || 'development',
+  mode: NODE_ENV,
+  devtool: NODE_ENV == 'development' ? 'source-map' : false,
   entry: path.resolve(__dirname, './src/view/main.js'),
   output: {
-    path: path.resolve(__dirname, './dist'),
-    // publicPath: '/'
+    path: path.resolve(__dirname, './dist')
   },
   module: {
     rules: [
