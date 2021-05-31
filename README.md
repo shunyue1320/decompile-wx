@@ -38,7 +38,7 @@ yarn run build
 ```
 
 # 效果图：
-### 打包现目后的效果
+### 打包项目后的效果
 ![juejin-app效果图](https://github.com/shunyue1320/decompile-wx/blob/master/1.png)
 
 # 反编译小程序：
