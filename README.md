@@ -29,7 +29,11 @@ yarn run start:electron
 
 ## build this project
 ```
-# 打包现目
+# 1.打包 vue 项目
+yarn run build:view
+# 2.打包 electron 项目
+yarn run build:electron
+# 3.打包成 exe 程序
 yarn run build
 ```
 
